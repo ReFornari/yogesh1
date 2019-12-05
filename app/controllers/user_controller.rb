@@ -1,4 +1,5 @@
 class UserController < ApplicationController
+    before_action :authenticate_user!
         def login
         session[:login] = 1
         session[:cart] = nil
