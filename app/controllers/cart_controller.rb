@@ -1,4 +1,5 @@
 class CartController < ApplicationController
+  before_action :authenticate_user!
 
   def add
     # get the Id of the product
@@ -71,7 +72,7 @@ class CartController < ApplicationController
     ##createOrder##
   
 def createOrder
-    # step 1 find out who is actually placing the order
+ #step 1 find out who is actually placing the order
  @user = User.find(current_user.id)
 
    # Step 2 actually make the order we wnt to keep in our database
@@ -82,11 +83,20 @@ def createOrder
    
  @cart = session[:cart] || {} # This gets the content from the current shopping cart
  @cart.each do | id, quantity| 
+   
    item = Item.find_by_id(id)
+   
    @orderitem = @order.orderitems.build(:item_id => item.id, :title => item.title, :quantity => quantity, :price => item.price)
+ 
  @orderitem.save
  end
     
-  redirect_to '/'
+    
+    @orders = Order.all
+    
+    
+    @orderitems = Orderitem.where(order_id: Order.last) 
+
+    session[:cart] = nil
 end 
 end
