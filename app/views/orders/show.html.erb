@@ -1,6 +1,5 @@
 <p id="notice"><%= notice %></p>
 <div class="mainCont">
-
 <p>
   <strong>Order date:</strong>
   <%= @order.order_date %>
@@ -16,14 +15,21 @@
   <%= @order.status %>
 </p>
 
+<p>
+  <strong>Order Id:</strong>
+  <%= @order.id %>
+</p>
+
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
 </div>
 <br><br>
+
 <div class="mainCont">
   <h1>Items in this order are</h1>
   <table id="customers">
     <% @orderitems.each do |orderitem| %>
+     <% @total = 0 %>
     <tr>
       <td>
       <%= orderitem.order_id %>
@@ -31,16 +37,44 @@
       <td>
       <%= orderitem.id %>
       </td>
-      <td>
-      <%= orderitem.title %>
-      </td>
-      <td>
-      <%= orderitem.quantity %>
-      </td>
-      <td><%= orderitem.price %>
-      </td>
-      
-  <% end %>
+      <td><%= orderitem.title %></td>
+      <td><%= orderitem.quantity %></td>
+      <td><%= orderitem.price %></td>
+      <% linetotal =(orderitem.quantity * orderitem.price) %>
+    <% @total += linetotal %>
+     <td>Total price: <%= @total %></td>
+      </tr>
     
-</table>
-</div>
+
+    
+    <% end %>
+    
+          <tr>
+        <% shipping = 25 %>
+        <% @grandtotal = shipping + @total %>
+        <td>Shipping &euro;25</td>
+        <td>Your Total payable today is: &euro;<%= @grandtotal %></td>
+        </tr>
+  </table>
+  </div>
+  
+
+  
+  <div class="mainCont">
+    
+    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="business" value="company2@liammccabe.ie">
+<input type="hidden" name="item_name" value="Golf Store Order Number <%= @order.id %>">
+<input type="hidden" name="currency_code" value="EUR">
+<input type="hidden" name="amount" value="<%= @grandtotal %>">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+<input type="hidden" name="return" value="https://rails-container-liamme.c9users.io/" >
+</form>
+
+    
+    
+    
+    
+    <a href="/paid/<%= @order.id %>" class="button">Pay For Me!</a>
+    </div>

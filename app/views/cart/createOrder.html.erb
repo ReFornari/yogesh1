@@ -1,39 +1,42 @@
 <div class="mainCont">
-<h2>Thank You</h2>
-<p>You have just placed an order</p>
+<h2>Thank you</h2>
+
 
 
 <table id="customers">
     <tr>
-      <% @orders.limit(1).order(id: :desc).each do |order| %>  
-      <td>Order reference for the order you just placed <%= order.id %></td>
-      <% end %>
+    <% @orders.limit(1).order(id: :desc).each do |order| %>
+    
+    <td>Order you just placed is <%= order.id %></td>
+    <% end %>
+    
     </tr>
-</table>   
+    
+</table>
+
 
 <table id="customers">
     <% @total = 0 %>
-    <% @orderitems.each do |id,quantity| %>
+    
+    <% @orderitems.each do |id, quantity| %>
     <tr>
     <% item = Orderitem.find_by_id(id) %>
-       
+    
     <td><%= item.title %></td>
     <td><%= item.quantity %></td>
-    <td><%=number_to_currency(item.price, :unit => "€")%></td> 
-    <td><%= number_to_currency(item.quantity * item.price, :unit => "€") %></td>
+    <td><%= number_to_currency(item.price, :unit=>"€") %></td>
+    <td><%= number_to_currency(item.quantity * item.price, :unit=>"€") %></td>
+    
     </tr>
-        <% timx = (item.quantity * item.price)%>
-    <% @total += timx %>
-    </tr>
+    
+    <% linetotal =(item.quantity * item.price) %>
+    <% @total += linetotal %>
     <% end %>
+    
     <tr>
-    <td>Order Total: &euro; <%= @total %></td>
+        <td>Order Total: &euro; <%= @total %></td>
+        
     </tr>
-</table>
-
-<td>Order Total: &euro; <%= @total %>
-</td>
- </tr>
     
     <tr>
         <% shipping = 25 %>
@@ -42,4 +45,9 @@
         <td>Your Total payable today is: &euro;<%= @grandtotal %></td>
         </tr>
 </table>
+
+  <div class="mainCont">
+    <a href="/paid/<%= @order.id %>" class="button">Pay For Me!</a>
+    </div>
+</div> 
 
