@@ -38,6 +38,8 @@ Rails.application.routes.draw do
   
   get '/cart/remove/:id' => 'cart#remove'
   
+  post '/search' => 'items#search'
+  
   get '/cart/decrease/:id' => 'cart#decrease'
   
 
