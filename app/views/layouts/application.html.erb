@@ -42,10 +42,18 @@
        </div>
 
 <footer class="foot">
-<% if session[:login] == 1 %>    
-<%= link_to 'New Item', new_item_path, :class =>"button", :role=>"button" %>
-<% end %>
-<h1></h1>&copy; Copyright 2019, Yogeshi</h1>
+      
+      <a href="/cart/clear" class="button">Clear Cart</a>
+      <% if user_signed_in? %>
+      <% if current_user.admin?  %>
+      
+      <% current_user.update_attribute :admin, true %>
+      
+      <a href="/showuser" class="button">Show Users</a>
+      <% end %>
+      <% end %>
+      <small>&copy; Copyright 2019, Yogeshi</small>
+      
 </footer>
     </body>
 </html>

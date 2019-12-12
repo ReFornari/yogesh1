@@ -4,7 +4,12 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+  if user_signed_in? # use this to check user is signed in
+    @user = User.find(current_user.id)
+    @orders = @user.orders.all
+  else 
+    redirect_to :root
+  end 
   end
 
   # GET /orders/1
