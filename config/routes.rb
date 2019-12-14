@@ -14,7 +14,8 @@ Rails.application.routes.draw do
   
   get '/checkout' => 'cart#createOrder'
 
-  get '/paid/:id' => 'static_pages#paid'
+  post '/search' => 'items#search'
+
   #root to: "home#index"
 
   get 'cart/index'
@@ -23,6 +24,8 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   get '/gallery'=> 'static_pages#gallery'
+  
+  get '/aboutSend/:id' => 'static_pages#aboutSend'
   
   get '/categories'=> 'static_pages#categories'
 
@@ -38,11 +41,11 @@ Rails.application.routes.draw do
   
   get '/cart/remove/:id' => 'cart#remove'
   
-  post '/search' => 'items#search'
-  
+  get '/paid/:id' => 'static_pages#paid'
+
   get '/cart/decrease/:id' => 'cart#decrease'
   
-  get '/showuser' => 'static_pages#users'
+
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

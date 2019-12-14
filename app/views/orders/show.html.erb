@@ -41,13 +41,10 @@
       <td><%= orderitem.quantity %></td>
       <td><%= orderitem.price %></td>
       <% linetotal =(orderitem.quantity * orderitem.price) %>
-    <% @total += linetotal %>
-     <td>Total price: <%= @total %></td>
+      <% @total += linetotal %>
+      <td>Total price: <%= @total %></td>
       </tr>
-    
-
-    
-    <% end %>
+      <% end %>
     
           <tr>
         <% shipping = 25 %>
@@ -62,19 +59,15 @@
   
   <div class="mainCont">
     
-    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
 <input type="hidden" name="cmd" value="_xclick">
-<input type="hidden" name="business" value="company2@liammccabe.ie">
-<input type="hidden" name="item_name" value="Golf Store Order Number <%= @order.id %>">
+<input type="hidden" name="business" value="sb-tbmvi172352@business.example.com">
+<input type="hidden" name="item_name" value="Yogeshi <%= @order.id %>">
 <input type="hidden" name="currency_code" value="EUR">
 <input type="hidden" name="amount" value="<%= @grandtotal %>">
 <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
-<input type="hidden" name="return" value="https://rails-container-liamme.c9users.io/" >
+<input type="hidden" name="return" value="https://545e823555974ab7a73c4dbde1ac94fb.vfs.cloud9.us-east-1.amazonaws.com/" >
 </form>
-
-    
-    
-    
     
     <a href="/paid/<%= @order.id %>" class="button">Pay For Me!</a>
-    </div>
+  </div>

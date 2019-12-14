@@ -41,19 +41,14 @@
        <%= yield %>
        </div>
 
-<footer class="foot">
-      
-      <a href="/cart/clear" class="button">Clear Cart</a>
-      <% if user_signed_in? %>
-      <% if current_user.admin?  %>
-      
-      <% current_user.update_attribute :admin, true %>
-      
-      <a href="/showuser" class="button">Show Users</a>
-      <% end %>
-      <% end %>
-      <small>&copy; Copyright 2019, Yogeshi</small>
-      
-</footer>
-    </body>
+  <footer class="foot">
+   <a href="/cart/clear" class="button">Clear Cart</a>
+   <% if user_signed_in? %>
+   <% if current_user.admin?  %>
+   <% end %>
+   <% end %>
+    <%= link_to 'New Item', items_path, :class=>"button" %>
+    <small>&copy; Copyright 2019, Yogeshi</small>
+  </footer>
+ </body>
 </html>
