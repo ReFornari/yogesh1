@@ -1,5 +1,5 @@
 .headSec {
-    background-color:#000000;
+    background: url("/assets/landscape8.jpg");
     min-height:10px;
     width: 100%;
     margin-bottom:10px;
@@ -16,15 +16,13 @@
 }
 
 .mainCont { 
-    
+    background-color: #fff;
     margin: auto;
     width:80%;
-    border: 3px solid #b3e0ff;
     padding: 10px;
     text-align: center;
 }
 
-.welcomeIm {width: 30%;}
 
 
 ul { 
@@ -32,11 +30,14 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;    
+    background-color: #00b4c5;    
     
 }
 
-li {float:left;}
+li {
+    float:left;
+    
+}
 
 li a {
     display: block;
@@ -47,55 +48,27 @@ li a {
     
 }
 
-
-.mainCont { 
-    
-    margin: auto;
-    width:80%;
-    border: 3px solid #b3e0ff;
-    padding: 10px;
-    text-align: center;
-}
-
-.welcomeIm {width: 30%;}
-
-
 .foot {
     min-height: 80px;
-    background-color: #b3e0ff;
+    background-color: #00b4c5;
     width: 100%;
     margin-top: 10px;
     overflow: auto;
-    
-    
-}
-
-.container {
-      background: url("/assets/.jpg");
-      background-repeat:no-repeat;
-      background-position:right bottom;
-      width: 100%;
-      min-height: 700px;
+    text-align: center;
 }
 
 #itemsContainer {
     width: 100%;
     text-align: center;
-    
-    
 }
-
 
 #itemsContainer h1 {
    display: block;
-    color: #4CAF50;
+    color: #000;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    
-    
 }
-
 
 .itemhols {
     margin-left: auto;
@@ -111,7 +84,7 @@ li a {
 
 .itemhols h1 {
    display: block;
-    color: #4CAF50;
+    color: #000;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -122,15 +95,13 @@ li a {
 
 .itemhols p {
    display: block;
-    color: #4CAF50;
+    color: #000;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 16px
     
 }
-
-
 
 .itemholsIm {
     width: 30%; 
@@ -142,7 +113,7 @@ li a {
 
 
 .button {
-    background-color: #4CAF50;
+    background-color: #1B5583;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -167,7 +138,7 @@ input[type=text], select {
 
 input[type=submit] {
     width: 100%;
-    background-color: #4CAF50;
+    background-color: #00b4c5;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -192,15 +163,20 @@ input[type=submit]:hover {
     padding: 8px;
 }
 
-#customers tr:nth-child(even){background-color: #f2f2f2;}
+#customers tr:nth-child(even){
+    background-color: #f2f2f2;
+    }
 
-#customers tr:hover {background-color: #ddd;}
+#customers tr:hover {
+    background-color: #ddd;
+    
+}
 
 #customers th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #4CAF50;
+    background-color: #00b4c5;
     color: white;
 }
 

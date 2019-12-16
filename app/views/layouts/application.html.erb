@@ -34,21 +34,19 @@
     </header>
     <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
-       
-       
-       
-       <div class="container">
+    <div class="container">
        <%= yield %>
        </div>
 
   <footer class="foot">
+   <a href="/showuser" class="button">Show User</a>
    <a href="/cart/clear" class="button">Clear Cart</a>
    <% if user_signed_in? %>
    <% if current_user.admin?  %>
    <% end %>
    <% end %>
     <%= link_to 'New Item', items_path, :class=>"button" %>
-    <small>&copy; Copyright 2019, Yogeshi</small>
+    <small>&copy; Copyright 2019, Yogeshi<small>
   </footer>
  </body>
 </html>
